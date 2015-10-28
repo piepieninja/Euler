@@ -17,6 +17,6 @@ int main(){
     }
   }
 
-  cout << "answer: " << ret;
+  cout << "answer: " << ret << endl;
   return 0;
 }
