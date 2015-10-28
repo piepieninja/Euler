@@ -5,6 +5,7 @@ all:
 	./answer.rb
 	./answer.py
 	./answer.sh
+	./answer.r
 	rm *x
 cpp:
 	g++ answer.cpp -o answer.cppx
