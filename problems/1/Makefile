@@ -11,4 +11,8 @@ clean:
 	then \
 		rm *x ;\
 	fi;
+	if [ -a *# ] ; \
+	then \
+		rm *# ;\
+	fi;
 	clear
