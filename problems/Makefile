@@ -7,7 +7,7 @@ all:
 	./$(problem)/answer.py
 	./$(problem)/answer.sh
 	./$(problem)/answer.r
-	java $(problem)/answer
+	java -cp ./$(problem) answer
 	rm $(problem)/*x
 	rm $(problem)/*class
 cpp:
