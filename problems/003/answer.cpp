@@ -1,25 +1,33 @@
 #include <iostream>
+#include <cmath>
+
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
 
 using namespace std;
 
 /**
  * Author: Caleb Adams
  * Discription: This is a very simple algorithm that runs in
- * linear time O(n) to compute the sum of all even fib numbers
+ * linear time O(n) to list the prime factors of a number.
  */
 
 int main(){
-  int ret = 0;
-  int fib_a = 0;
-  int fib_b = 1;
-  int fib_c = 1;
-  int max = 4000000;
-  while (fib_c < max){
-    fib_c = fib_a + fib_b;
-    fib_a = fib_b;
-    fib_b = fib_c;
-    if (!(fib_c % 2)) ret += fib_c;
+
+  unsigned long long target = 600851475143;
+
+  while (!(target % 2)) {
+    cout << "2 ";
+    target /= 2;
   }
-  cout << "answer: " << ret << endl;
+
+  for (int i = 3; i <= sqrt(target); i += 2){
+    while (!(target % i)){
+      cout << i << " ";
+      target = target/i;
+    }
+  }
+
+  if (target > 2) cout << target << "";
+  
   return 0;
 }
