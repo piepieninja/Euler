@@ -16,7 +16,7 @@ Languages Used:
 * Bash/Shell
 * javascript
 
-## How To Use:
+## How To Use
 
 To run a specific problem in all of the languages listed above use the make
 command followed by assigning the problem number. The code should look
