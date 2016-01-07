@@ -24,9 +24,9 @@ something like this:
 
 <code> $ make problem=001 </code>
 
-that will contruct all of the files nessesary to run problem 001 and then
-remove all of the unnessesary files. To run other problems use the same
-syntax:
+that will contruct all of the files nessesary to run problem 001, run problem
+001, and then remove all of the unnessesary files. To run other problems
+use the same syntax:
 
 <code> $ make problem=### </code>
 
