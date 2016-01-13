@@ -17,4 +17,9 @@ done
 
 while [[ $i - ]]; do
   #statements
+  while [[ $i - ]]; do
+    echo "$i "
+    target=$((target / i))
+  done
+  i=$((i + 2))
 done
