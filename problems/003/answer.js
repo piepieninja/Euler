@@ -7,19 +7,19 @@
  */
 
 var target = 600851475143;
- 
+
  while (target % 2 == 0) {
-     System.out.print("2 ");
+     console.log("2 ");
      target /= 2;
  }
 
- for (int i = 3; i <= Math.sqrt(target); i += 2){
+ for (var i = 3; i <= Math.sqrt(target); i += 2){
      while (target % i == 0){
-   System.out.print(i + " ");
+   console.log(i + " ");
    target = target/i;
      }
  }
 
  if (target > 2) {
-     System.out.print(Long.toUnsignedString(target) + " " );
+     console.log(target + " " );
  }
