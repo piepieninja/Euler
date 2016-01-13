@@ -28,6 +28,8 @@ int main(){
   }
 
   if (target > 2) cout << target << "";
-  
+
+  cout << "\n";
+
   return 0;
 }
