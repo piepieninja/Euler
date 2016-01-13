@@ -6,8 +6,20 @@
 # linear time O(n) to list the prime factors of a number.
 ##
 
+import math
+
 largenum = 600851475143
 
 while (largenum % 2 == 0):
     print 2
-    largenum = largenum / 2;
+    largenum /= 2;
+
+i = 3
+while (i <= math.sqrt(largenum)):
+    while (largenum % i == 0):
+        print i
+        largenum = largenum/i
+    i += 2
+
+if (largenum > 2):
+    print largenum
