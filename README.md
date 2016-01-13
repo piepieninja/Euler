@@ -1,5 +1,6 @@
 # Proejct Euler
 [Project Euler Problem List](https://projecteuler.net/archives)
+![Project Euler Badge](https://projecteuler.net/profile/piepieninja.png)
 
 ## About
 
