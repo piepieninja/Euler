@@ -1,4 +1,5 @@
 all:
+	chmod +x $(problem)/* # because I am lazy
 	g++ $(problem)/answer.cpp -o $(problem)/answer.cppx
 	javac $(problem)/answer.java
 	./$(problem)/answer.cppx
@@ -36,3 +37,6 @@ clean:
 		rm $(problem)/*class ;\
 	fi;
 	clear
+help:
+	echo "USAGE: Make problem=###"
+	echo "EXAMPLE: Make problem=001"
