@@ -6,4 +6,7 @@
 # linear time O(n) to list the prime factors of a number.
 ##
     
+largenum = 600851475143
 
+while (largenum % 2 == 0):
+    print 2
