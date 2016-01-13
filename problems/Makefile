@@ -1,16 +1,50 @@
 all:
 	chmod +x $(problem)/* # because I am lazy
-	g++ $(problem)/answer.cpp -o $(problem)/answer.cppx
-	javac $(problem)/answer.java
-	./$(problem)/answer.cppx
-	./$(problem)/answer.js
-	./$(problem)/answer.rb
-	./$(problem)/answer.py
-	./$(problem)/answer.sh
-	./$(problem)/answer.r
-	java -cp ./$(problem) answer
-	rm $(problem)/*x
-	rm $(problem)/*class
+	# only do them if they are there!!
+	if [ -a $(problem)/*.cpp ] ; \
+	then \
+		g++ $(problem)/answer.cpp -o $(problem)/answer.cppx ;\
+	fi;
+	if [ -a $(problem)/*.java ] ; \
+	then \
+		javac $(problem)/answer.java ;\
+	fi;
+	if [ -a $(problem)/*.cppx ] ; \
+	then \
+		./$(problem)/answer.cppx ;\
+	fi;
+	if [ -a $(problem)/*.js ] ; \
+	then \
+		./$(problem)/answer.js ;\
+	fi;
+	if [ -a $(problem)/*.rb ] ; \
+	then \
+		./$(problem)/answer.rb ;\
+	fi;
+	if [ -a $(problem)/*.py ] ; \
+	then \
+		./$(problem)/answer.py ;\
+	fi;
+	if [ -a $(problem)/*.sh ] ; \
+	then \
+		./$(problem)/answer.sh ;\
+	fi;
+	if [ -a $(problem)/*.r ] ; \
+	then \
+		./$(problem)/answer.r ;\
+	fi;
+	if [ -a $(problem)/*.class ] ; \
+	then \
+		java -cp ./$(problem) answer ;\
+	fi;
+	if [ -a $(problem)/*x ] ; \
+	then \
+		rm $(problem)/*x ;\
+	fi;
+	if [ -a $(problem)/*.class ] ; \
+	then \
+		rm $(problem)/*class ;\
+	fi;
 cpp:
 	g++ $(problem)/answer.cpp -o $(problem)/answer.cppx
 java:
