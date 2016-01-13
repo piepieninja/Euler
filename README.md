@@ -1,6 +1,6 @@
 # Proejct Euler
 
-![Project Euler Badge](http://projecteuler.net/profile/piepieninja.png)
+![Project Euler Badge](https://projecteuler.net/profile/piepieninja.png)
 <br>
 [Project Euler Problem List](https://projecteuler.net/archives)
 
@@ -34,7 +34,7 @@ use the same syntax:
 
 <code> $ make problem=### </code>
 
-<i>note:</i> this can only be done inside of the problems directory! 
+<i>note:</i> this can only be done inside of the problems directory!
 
 ## Caleb Adams
 
