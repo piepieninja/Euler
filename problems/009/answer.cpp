@@ -5,7 +5,8 @@ using namespace std;
 
 /**
  * Author: Caleb Adams
- * Discription:
+ * Discription: This is a simple algorithm to find the pythagorian triplet that sums
+ * to 1000. This algorithm runs in linear time O(n) because a and b can be interchanged.
  */
 
 int square(int x) {
