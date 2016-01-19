@@ -1,6 +1,5 @@
 all:
 	chmod +x $(problem)/* # because I am lazy
-	# only do them if they are there!!
 	if [ -a $(problem)/*.cpp ] ; \
 	then \
 		g++ $(problem)/answer.cpp -o $(problem)/answer.cppx ;\
