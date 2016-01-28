@@ -42,7 +42,7 @@ int main(){
   m.insert(pair<string,string> ("60", "sixty"   ));
   m.insert(pair<string,string> ("70", "seventy" ));
   m.insert(pair<string,string> ("80", "eighty"  ));
-  m.insert(pair<string,string> ("90", "ninety"   ));
+  m.insert(pair<string,string> ("90", "ninety"  ));
 
   m.insert(pair<string,string> ("h", "hundred"  ));
 
