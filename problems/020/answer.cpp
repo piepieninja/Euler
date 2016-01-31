@@ -9,7 +9,7 @@ using namespace std;
  */
 
 char largeNumber[INT_MAX/8] = {0}; // wow this is big
-char tempNumber[INT_MAX/8] = {0}; // wow this is big
+char tempNumber[INT_MAX/8]  = {0}; // wow this is big
 int  digits                 =  0 ; // count the number of digits
 
 
@@ -32,24 +32,20 @@ void printNumber(){
   cout << endl;
 }
 
-void add(){
-
-}
-
 void add(int x, int fromIndex, bool isTemp){ // adds int x to the array at possition fromIndex
   if (isTemp){
     for (int i = fromIndex; x > 0; i++){
-      if (largeNumber[i] + x%10 < 10) {
-	largeNumber[i] += x%10;
+      if (tempNumber[i] + x%10 < 10) {
+	tempNumber[i] += x%10;
 	x /= 10;
-      } else { // oh boy here we go                                                                                                                                                    
+      } else { // oh boy here we go                                                                                                                                                 
 	if (i == digits - 1) {
-	  digits++; // increase digit count and clear previous data                                                                                                                    
-	  largeNumber[i+1] = 0;
+	  digits++; // increase digit count and clear previous data                                                                                                                 
+	  tempNumber[i+1] = 0;
 	}
-	int val        = (largeNumber[i] + x%10 - 10);
-	int carry      = ((largeNumber[i] + x%10) / 10);
-	largeNumber[i] = val;
+	int val        = (tempNumber[i] + x%10 - 10);
+	int carry      = ((tempNumber[i] + x%10) / 10);
+	tempNumber[i] = val;
 	x /= 10;
 	x += carry;
       }
@@ -70,6 +66,23 @@ void add(int x, int fromIndex, bool isTemp){ // adds int x to the array at possi
 	x /= 10;
 	x += carry;
       }
+    }
+  }
+}
+
+void add(){ // adds the temp array to the large number array. Need to re-initalize numbers after this
+  for (int i = 0; i < digits; i++){
+    if (tempNumber[i] + largeNumber[i] < 10){
+      largeNumber[i] += tempNumber[i];
+    } else {
+      if (i == digits - 1){
+	digits++;
+	largeNumber[i+1] = 0;
+      }
+      int val   = (largeNumber[i] + tempNumber[i]%10 - 10);
+      int carry = ((largeNumber[i] + tempNumber[i]%10) / 10);
+      largeNumber[i] = val;
+      add(carry, i, 1); // add the left overs!
     }
   }
 }
@@ -102,7 +115,10 @@ int main(){
 
   initNumber(10);
   printNumber();
-  multiply(10);
+  add();
   printNumber();
-  
+
+  initNumber(10);
+  printNumber();
+      
 }
