@@ -60,7 +60,10 @@ void addSelf(){
 }
 
 void multiply(int x){
-  for (int i = 0; i < x; i++) addSelf();
+  for (int i = 0; i < x; i++){
+    cout << "multiply" << endl;
+    addSelf();
+  }
 }
 
 int main(){
