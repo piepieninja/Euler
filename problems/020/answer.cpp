@@ -8,8 +8,8 @@ using namespace std;
  * Discription: finding 100! by building very large numbers
  */
 
-char largeNumber[INT_MAX/8]  = {0}; // wow this is big
-char tempNumber[INT_MAX/8]   = {0}; // wow this is big
+char largeNumber[200]  = {0}; // wow this is big // use INT_MAX if you want
+char tempNumber[200]   = {0}; // wow this is big
 int  tdigits                 =  0 ; // count the temp
 int  digits                  =  0 ; // count the number of digits
 
