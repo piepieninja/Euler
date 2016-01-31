@@ -73,40 +73,21 @@ void printFib2(){
   cout << endl;
 }
 
-void add(int x, int fromIndex, bool isTemp){ // adds int x to the array at possition fromIndex
-  if (isTemp){
-    for (int i = fromIndex; x > 0; i++){
-      if (fib2[i] + x%10 < 10) {
-	fib2[i] += x%10;
-	x /= 10;
-      } else { // oh boy here we go
-	if (i == f1digits - 1) {
-	  f1digits++; // increase digit count and clear previous data
-	  fib2[i+1] = 0;
-	}
-	int val        = (fib2[i] + x%10 - 10);
-	int carry      = ((fib2[i] + x%10) / 10);
-	fib2[i] = val;
-	x /= 10;
-	x += carry;
+void add(int x, int fromIndex){ // adds int x to the array at possition fromIndex
+  for (int i = fromIndex; x > 0; i++){
+    if (fib3[i] + x%10 < 10) {
+      fib3[i] += x%10;
+      x /= 10;
+    } else { // oh boy here we go
+      if (i == f3digits - 1) {
+        f3digits++; // increase digit count and clear previous data
+        fib3[i+1] = 0;
       }
-    }
-  } else {
-    for (int i = fromIndex; x > 0; i++){
-      if (fib1[i] + x%10 < 10) {
-	fib1[i] += x%10;
-	x /= 10;
-      } else { // oh boy here we go
-	if (i == f1digits - 1) {
-	  f1digits++; // increase digit count and clear previous data
-	  fib1[i+1] = 0;
-	}
-	int val        = (fib1[i] + x%10 - 10);
-	int carry      = ((fib1[i] + x%10) / 10);
-	fib1[i] = val;
-	x /= 10;
-	x += carry;
-      }
+      int val        = (fib3[i] + x%10 - 10);
+      int carry      = ((fib3[i] + x%10) / 10);
+      fib3[i] = val;
+      x /= 10;
+      x += carry;
     }
   }
 }
@@ -114,30 +95,22 @@ void add(int x, int fromIndex, bool isTemp){ // adds int x to the array at possi
 void add(){ // adds the temp array to the large number array. Need to re-initalize numbers after this
   for (int i = 0; i < f1digits; i++){
     if (fib2[i] + fib1[i] < 10){
-      fib1[i] += fib2[i];
+      fib3[i] = fib1[i] + fib2[i];
     } else {
-      if (i == f1digits - 1){
-	f1digits++;
-	fib1[i+1] = 0;
+      if (i == f3digits - 1){
+      	f3digits++;
+      	fib3[i+1] = 0;
       }
       int val   = (fib1[i] + fib2[i]%10 - 10);
       int carry = ((fib1[i] + fib2[i]%10) / 10);
-      fib1[i] = val;
-      add(carry, i+1, 0); // add the left overs!
+      fib3[i] = val;
+      add(carry, i+1); // add the left overs!
     }
   }
 }
 
-void multiply(int x){
-  x--; // let's not count zero
-  while(x) {
-    add();
-    x--;
-  }
-}
-
 void fibStep(){
-  
+
 }
 
 int main(){
@@ -153,7 +126,7 @@ int main(){
       printFib1();
       break;
     }
-
+    add();
     setFib1();
     setFib2();
   }
