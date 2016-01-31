@@ -128,11 +128,21 @@ void factorial(int x){
   }
 }
 
+void sumDigits(){
+  long sum = 0;
+  for (int i = 0; i <= digits; i++){
+    sum += largeNumber[i];
+  }
+  cout << "digit sum: " << sum << endl;
+}
+
 int main(){
 
   cout << "========== FACTORIAL ==========" << endl;
 
   factorial(100);
   printNumber();
+
+  sumDigits();
 
 }
