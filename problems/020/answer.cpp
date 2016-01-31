@@ -18,7 +18,7 @@ void initNumber(int x){
   digits = 0;
   for (int i = 0; x > 0 ; i++){
     largeNumber[i] = x%10;
-    tempNumber[i]  = x%10;
+    //tempNumber[i]  = x%10; // don't do this in production, only for testing
     x /= 10;
     digits++;
   }
@@ -88,9 +88,21 @@ void add(){ // adds the temp array to the large number array. Need to re-initali
 }
 
 void multiply(int x){
-  for (int i = 0; x > 0; i++){
-    
+  for (int i = 0; i < x; i++){
+    if (x * largeNumber[i] < 10) {
+      tempNumber[i] *= x;
+    } else {
+      if (i == digits - 1) {
+        digits++;
+        largeNumber[i+1] = 0;
+      }
+      int val   = (tempNumber[i] * x)%10;
+      int carry = (tempNumber[i] * x)/10;
+      tempNumber[i] = val;
+      add(carry, i, 1);
+    }
   }
+  add();
 }
 
 int main(){
@@ -113,12 +125,14 @@ int main(){
   printNumber();
 
 
-  initNumber(10);
+  /*initNumber(10);
   printNumber();
   add();
-  printNumber();
+  printNumber();*/
 
   initNumber(10);
+  printNumber();
+  multiply();
   printNumber();
       
 }
