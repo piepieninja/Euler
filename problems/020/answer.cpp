@@ -10,6 +10,8 @@ using namespace std;
 
 char largeNumber[INT_MAX/8] = {0}; // wow this is big
 char tempNumber[INT_MAX/8]  = {0}; // wow this is big
+char multiplier[65535]      = {0}; // only of size int, 
+int  mdigits                =  0 ; // count the int
 int  digits                 =  0 ; // count the number of digits
 
 
@@ -24,10 +26,27 @@ void initNumber(int x){
   }
 }
 
+void initInt(int x){
+  mdigits = 0;
+  for (int i = 0; x > 0; i++) {
+    multiplier[i] = x%10;
+    x /= 10;
+    mdigits++;
+  }
+}
+
 void printNumber(){
   cout << "Number: ";
   for (int i = digits - 1; i >= 0; i--){ // print it backwards
     cout << (short) largeNumber[i];
+  }
+  cout << endl;
+}
+
+void printMultiplier(){
+  cout << "Multiplier: ";
+  for (int i = digits - 1; i >= 0; i--){ // print it backwards
+    cout << (short) multiplier[i];
   }
   cout << endl;
 }
@@ -88,18 +107,21 @@ void add(){ // adds the temp array to the large number array. Need to re-initali
 }
 
 void multiply(int x){
-  for (int i = 0; i < x; i++){
-    if (x * largeNumber[i] < 10) {
-      tempNumber[i] *= x;
-    } else {
-      if (i == digits - 1) {
-        digits++;
-        largeNumber[i+1] = 0;
+  initInt(x);
+  for (int i = 0; i < mdigits; i++){
+    for (int j = 0; j < digits; j++ ){
+      if (multiplier[i] * largeNumber[j] < 10){
+	tempNumber[j] = multiplier[i] * largeNumber[j];
+      } else {
+	if (j == digits - 1) {
+	  digits++;
+	  tempNumber[j+1] = 0;
+	}
+	int val   = (largeNumber[j] * multiplier[i])%10;
+	int carry = (largeNumber[j] * multiplier[i])/10;
+	tempNumber[j] = val;
+	add(carry, j, 1);
       }
-      int val   = (tempNumber[i] * x)%10;
-      int carry = (tempNumber[i] * x)/10;
-      tempNumber[i] = val;
-      add(carry, i, 1);
     }
   }
   add();
@@ -132,7 +154,8 @@ int main(){
 
   initNumber(10);
   printNumber();
-  multiply();
+  multiply(10);
+  printMultiplier();
   printNumber();
       
 }
