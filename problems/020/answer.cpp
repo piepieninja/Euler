@@ -8,30 +8,35 @@ using namespace std;
  * Discription: finding 100! by building very large numbers
  */
 
-char largeNumber[INT_MAX/8] = {0}; // wow this is big
-char tempNumber[INT_MAX/8]  = {0}; // wow this is big
-char multiplier[65535]      = {0}; // only of size int, 
-int  mdigits                =  0 ; // count the int
-int  digits                 =  0 ; // count the number of digits
+char largeNumber[INT_MAX/8]  = {0}; // wow this is big
+char tempNumber[INT_MAX/8]   = {0}; // wow this is big
+int  tdigits                 =  0 ; // count the temp
+int  digits                  =  0 ; // count the number of digits
 
 
 // put the number x in the largeNumber
 void initNumber(int x){
   digits = 0;
   for (int i = 0; x > 0 ; i++){
-    largeNumber[i] = x%10;
-    //tempNumber[i]  = x%10; // don't do this in production, only for testing
+    largeNumber[i]  = x%10; 
     x /= 10;
     digits++;
   }
 }
 
-void initInt(int x){
-  mdigits = 0;
-  for (int i = 0; x > 0; i++) {
-    multiplier[i] = x%10;
+void initTemp(int x){
+  tdigits = 0;
+  for (int i = 0; x > 0 ; i++){
+    tempNumber[i]  = x%10;
     x /= 10;
-    mdigits++;
+    tdigits++;
+  }
+}
+
+void setTemp(){ // set the temp to the number
+  tdigits = digits;
+  for (int i = 0; i <= digits; i++){
+    tempNumber[i] = largeNumber[i];
   }
 }
 
@@ -43,10 +48,10 @@ void printNumber(){
   cout << endl;
 }
 
-void printMultiplier(){
-  cout << "Multiplier: ";
-  for (int i = digits - 1; i >= 0; i--){ // print it backwards
-    cout << (short) multiplier[i];
+void printTemp(){
+  cout << "Temp: ";
+  for (int i = digits - 1; i >= 0; i--){ // print it backwards                                                                                                                       
+    cout << (short) tempNumber[i];
   }
   cout << endl;
 }
@@ -101,61 +106,33 @@ void add(){ // adds the temp array to the large number array. Need to re-initali
       int val   = (largeNumber[i] + tempNumber[i]%10 - 10);
       int carry = ((largeNumber[i] + tempNumber[i]%10) / 10);
       largeNumber[i] = val;
-      add(carry, i, 1); // add the left overs!
+      add(carry, i+1, 0); // add the left overs!
     }
   }
 }
 
 void multiply(int x){
-  initInt(x);
-  for (int i = 0; i < mdigits; i++){
-    for (int j = 0; j < digits; j++ ){
-      if (multiplier[i] * largeNumber[j] < 10){
-	tempNumber[j] = multiplier[i] * largeNumber[j];
-      } else {
-	if (j == digits - 1) {
-	  digits++;
-	  tempNumber[j+1] = 0;
-	}
-	int val   = (largeNumber[j] * multiplier[i])%10;
-	int carry = (largeNumber[j] * multiplier[i])/10;
-	tempNumber[j] = val;
-	add(carry, j, 1);
-      }
-    }
+  x--; // let's not count zero
+  while(x) {
+    add();
+    x--;
   }
-  add();
+}
+
+void factorial(int x){
+  initNumber(100);
+  while (x) {
+    setTemp();
+    multiply(x);
+    x--;
+  }
 }
 
 int main(){
 
   cout << "========== FACTORIAL ==========" << endl;
 
-  initNumber(42892);
-  printNumber();
-  add(2, 0, 0);
-  printNumber();
-  add(9, 0, 0);
-  printNumber();
-  add(22222, 0, 0);
+  factorial(100);
   printNumber();
 
-
-  initNumber(99);
-  printNumber();
-  add(2, 0, 0);
-  printNumber();
-
-
-  /*initNumber(10);
-  printNumber();
-  add();
-  printNumber();*/
-
-  initNumber(10);
-  printNumber();
-  multiply(10);
-  printMultiplier();
-  printNumber();
-      
 }
