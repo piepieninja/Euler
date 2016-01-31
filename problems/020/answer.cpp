@@ -120,7 +120,7 @@ void multiply(int x){
 }
 
 void factorial(int x){
-  initNumber(100);
+  initNumber(x);
   while (x) {
     setTemp();
     multiply(x);
