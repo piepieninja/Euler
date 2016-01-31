@@ -23,6 +23,10 @@ void initFib1(int x){
     x /= 10;
     f1digits++;
   }
+  if (x == 0){
+    f1digits = 1;
+    fib1[0] = 0;
+  }
 }
 
 void initFib2(int x){
@@ -32,6 +36,10 @@ void initFib2(int x){
     x /= 10;
     f2digits++;
   }
+  if (x == 0){
+    f1digits = 1;
+    fib1[0] = 0;
+  }
 }
 
 void initFib3(int x){
@@ -40,6 +48,10 @@ void initFib3(int x){
     fib3[i]  = x%10;
     x /= 10;
     f3digits++;
+  }
+  if (x == 0){
+    f1digits = 1;
+    fib1[0] = 0;
   }
 }
 
@@ -58,7 +70,7 @@ void setFib2(){ // sets fib2 to fib3
 }
 
 void printFib1(){
-  cout << "Number: ";
+  cout << "fib1: ";
   for (int i = f1digits - 1; i >= 0; i--){ // print it backwards
     cout << (short) fib1[i];
   }
@@ -66,9 +78,17 @@ void printFib1(){
 }
 
 void printFib2(){
-  cout << "Temp: ";
-  for (int i = f1digits - 1; i >= 0; i--){ // print it backwards
+  cout << "fib2: ";
+  for (int i = f2digits - 1; i >= 0; i--){ // print it backwards
     cout << (short) fib2[i];
+  }
+  cout << endl;
+}
+
+void printFib3(){
+  cout << "fib3: ";
+  for (int i = f3digits - 1; i >= 0; i--){ // print it backwards
+    cout << (short) fib3[i];
   }
   cout << endl;
 }
@@ -120,6 +140,10 @@ int main(){
   initFib1(0);
   initFib2(1);
   initFib3(1);
+
+  printFib1();
+  printFib2();
+  printFib3();
 
   while (f1digits < 1000){
     if (f1digits == 1000){
