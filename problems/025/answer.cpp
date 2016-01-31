@@ -136,29 +136,27 @@ void multiply(int x){
   }
 }
 
-void factorial(int x){
-  initNumber(x);
-  while (x) {
-    setTemp();
-    multiply(x);
-    x--;
-  }
-}
-
-void sumDigits(){
-  long sum = 0;
-  for (int i = 0; i <= f1digits; i++){
-    sum += fib1[i];
-  }
-  cout << "digit sum: " << sum << endl;
+void fibStep(){
+  
 }
 
 int main(){
 
   cout << "========== FIB to 1000  ==========" << endl;
 
-  initNumber(0);
+  initFib1(0);
+  initFib2(1);
+  initFib3(1);
 
+  while (f1digits < 1000){
+    if (f1digits == 1000){
+      printFib1();
+      break;
+    }
+
+    setFib1();
+    setFib2();
+  }
 
 
 }
