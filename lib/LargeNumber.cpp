@@ -19,12 +19,17 @@ private:
   void setNumber(int);
   void setNumber(long);
   void setNumber(string);
+  void setNumber(LargeNumber);
 
   void setValueAtIndex(char, int);
 
   void add(int);
   void add(int, int);
   void add(LargeNumber);
+
+  void multiply(int);
+
+  void pow(int);
 
   char valueAtIndex(int);
 
@@ -59,6 +64,13 @@ void LargeNumber::setNumber(string str){
   digits = str.length();
   for (int i = 0; i < digits ; i++){
     array[digits - 1 - i] = str[i] - 48; // assumes ASCII
+  }
+}
+
+void LargeNumber::setNumber(LargeNumber l){
+  digits = l.getDigits();
+  for (int i = 0; i < digits; i++){
+    this->setValueAtIndex(l.valueAtIndex(i), i);
   }
 }
 
@@ -119,6 +131,20 @@ void LargeNumber::add(LargeNumber l){
       this->add(carry, i+1); // add the left overs!
     }
   }
+}
+
+void LargeNumber::multiply(int x){
+    LargeNumber l;
+    l.setNumber(* this);
+    x--;
+    while (x){
+      this->add(l);
+      x--;
+    }
+}
+
+void LargeNumber::pow(int x){
+
 }
 
 // ====== char RETURNS HERE ======
