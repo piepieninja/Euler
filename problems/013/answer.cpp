@@ -115,9 +115,11 @@ int main(){
   LargeNumber temp;
   large.setNumber(numbers[0]);
   for (int i = 1; i < 100; i++){;
-    large.add(temp.setNumber(numbers[i]));
+    temp.setNumber(numbers[i]);
+    cout << "+ " << temp.toString() << endl;
+    large.add(temp);
   }
-  cout < "sum: " << large.toString() << endl;
+  cout << "= " << large.toString() << endl;
   large.setNumber(large.sumDigits());
   cout << "first 10 digits: " << large.getDigits(10) << endl;
 
