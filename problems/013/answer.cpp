@@ -121,6 +121,6 @@ int main(){
   }
   cout << "= " << large.toString() << endl;
   large.setNumber(large.sumDigits());
-  cout << "first 10 digits: " << large.getDigits(10) << endl;
+  //cout << "first 10 digits: " << large.getDigits(10) << endl;
 
 }

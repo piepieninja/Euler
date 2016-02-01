@@ -23,8 +23,6 @@ private:
 
   void setValueAtIndex(char, int);
 
-  void decrement();
-
   void subtract(int);
 
   void add(int);
