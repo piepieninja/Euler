@@ -33,7 +33,6 @@ private:
   long sumDigits();
 
   string toString();
-  string getDigits(int);
 };
 
 // ====== VOID RETURNS HERE ======
@@ -151,24 +150,6 @@ string LargeNumber::toString(){
   ostringstream os;
   for (int i = digits - 1; i >= 0; i--){ // print it backwards
     os << (int) array[i];
-  }
-  return os.str();
-}
-
-/**
-* return the first |x| digits if x > 0 and the last |x| digits if x < 0
-*/
-string LargeNumber::getDigits(int x){
-  // TODO implement
-  ostringstream os;
-  if (x > 0) {
-    for (int i = 0; i < x; i++){ // print it backwards
-      os << (int) array[digits - 1 - i];
-    }
-  } else {
-    for (int i = 0; i < (x * -1); i++){ // print it backwards
-      os << (int) array[i];
-    }
   }
   return os.str();
 }
