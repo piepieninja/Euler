@@ -112,9 +112,10 @@ int main(){
                         "20849603980134001723930671666823555245252804609722",
                         "53503534226472524250874054075591789781264330331690"};
   LargeNumber large;
+  LargeNumber temp;
   large.setNumber(numbers[0]);
-  for (int i = 1; i < 100; i++){
-    large.add(numbers[i]);
+  for (int i = 1; i < 100; i++){;
+    large.add(temp.setNumber(numbers[i]));
   }
   cout < "sum: " << large.toString() << endl;
   large.setNumber(large.sumDigits());
