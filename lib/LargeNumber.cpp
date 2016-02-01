@@ -35,6 +35,7 @@ private:
   void multiply(LargeNumber);
 
   void power(int);
+  void binaryPower(int);
 
   bool equals(int);
   bool equals(LargeNumber);
@@ -168,21 +169,37 @@ void LargeNumber::multiply(int x){
 }
 
 void LargeNumber::multiply(LargeNumber l){
+  //
+  // TODO FIX, DOES NOT WORK
+  //
     LargeNumber temp;
     temp.setNumber(* this);
     l.subtract(1); // don't multiply by zero!
-    while (!(l.getDigits() == 1 && l.equals(0))){ // the digits speeds it up
+    while (!l.equals(0)){ // the digits speeds it up
       this->add(temp);
       l.subtract(1);
     }
 }
 
 void LargeNumber::power(int x){
+  //
+  // TODO FIX, DOES NOT WORK
+  //
   LargeNumber l;
   l.setNumber(* this);
   x--; // don't multiply by zero!
   while (x){
     this->multiply(l);
+    x--;
+  }
+}
+
+// does 2^x power
+void LargeNumber::binaryPower(int x){
+  this->setNumber(2);
+  x--; // don't multiply by zero!
+  while (x){
+    this->multiply(2);
     x--;
   }
 }
@@ -193,14 +210,20 @@ bool LargeNumber::equals(int x){
   l.setNumber(x);
   if (digits != l.getDigits()) return false; // quick check
   for (int i = 0; i < digits; i++){ // long check
-    if (this->valueAtIndex(i) == l.valueAtIndex(i)) return false;
+    if (this->valueAtIndex(i) != l.valueAtIndex(i)) return false;
   }
   return true;
 }
 
 bool LargeNumber::equals(LargeNumber l){
-  //TODO implement
-  return false;
+  //
+  // TODO FIX, DOES NOT WORK
+  //
+  if (digits != l.getDigits()) return false; // quick check
+  for (int i = 0; i < digits; i++){ // long check
+    if (this->valueAtIndex(i) != l.valueAtIndex(i)) return false;
+  }
+  return true;
 }
 
 // ====== char RETURNS HERE ======
@@ -218,7 +241,7 @@ int LargeNumber::getDigits(){
 // ====== LONG RETURNS HERE ======
 
 long LargeNumber::sumDigits(){
-  // the largest this could be is 9 * 100,000 so only a long is need. LONG_MAX is 2147483647 (2^(31)-1) or greater
+  // the largest this could be is 9 * 100,000 so only a long is needed. LONG_MAX is 2147483647 (2^(31)-1) or greater
   long sum = 0;
   for (int i = 0; i < digits; i++){
     sum += array[i];
