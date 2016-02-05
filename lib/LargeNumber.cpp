@@ -251,7 +251,7 @@ long LargeNumber::sumDigits(){
 
 string LargeNumber::toString(){
   ostringstream os;
-  for (int i = digits - 1; i >= 0; i--){ // print it backwards
+  for (int i = digits; i >= 0; i--){ // print it backwards
     os << (int) array[i];
   }
   return os.str();
