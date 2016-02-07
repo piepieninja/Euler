@@ -1,37 +1,33 @@
+#include <string>
 #include <iostream>
-#include "../../lib/LargeNumber.cpp"
+#include "../../lib/bigint/BigIntegerLibrary.hh" //matt's big int
 
 using namespace std;
 
 /**
  * Author: Caleb Adams
- * Discription: this is a reuse of code from problem 020 with a data structure that can make very big numbers
+ * Discription: this is basically problem 002
  */
 
 int main(){
 
   cout << "========== FIB to 1000 Digits  ==========" << endl;
 
-  LargeNumber fib1;
-  LargeNumber fib2;
-  LargeNumber fib3;
-  LargeNumber temp;
+  BigInteger fib_a;
+  BigInteger fib_b;
+  BigInteger fib_c;
 
-  fib1.setNumber("1");
-  fib2.setNumber("1");
-  // fib3.setNumber("1");
+  BigInteger count = 2;
 
-  int indexCount = 2;
+  string max_str("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+  BigInteger max = stringToBigInteger(max_str);
 
-  while(true){
-    temp.setNumber(fib1);
-    temp.add(fib2);
-    fib3.setNumber(temp);
-    fib1.setNumber(fib2);
-    fib2.setNumber(fib3);
-    indexCount++;
-    if (fib3.getDigits() == 1000) break; // get 1000
-    cout << "fib " << indexCount << ": "<< fib3.toString() << endl;
+  while((fib_c - max) > 0){
+    fib_c = fib_a + fib_b;
+    fib_a = fib_b;
+    fib_b = fib_c;
+    count++;
   }
-  cout << "1000 Digit \nFib " << indexCount << ": "<< fib3.toString() << endl;
+  // found it!
+  cout << "FOUND IT!.\nFib " << count << " = " << fib_c << endl;
 }
