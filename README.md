@@ -1,4 +1,4 @@
-# Proejct Euler
+# Project Euler
 
 ![Project Euler Badge](http://projecteuler.net/profile/piepieninja.png)
 <br>
