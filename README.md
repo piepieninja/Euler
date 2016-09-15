@@ -7,7 +7,7 @@
 #### Friend Key:
 <code>868191_Nh5fZ2IySP0LloIP4FFAH6haBC4uJEqi</code>
 
-## About
+## About 
 
 *notice*
 These questions are practice and you should solve them independently.
@@ -21,6 +21,11 @@ Languages Used:
 * R
 * Bash/Shell
 * javascript
+
+*note* some c++ problems will use [Helena's Math Library](https://github.com/balesh2/MathLib)
+You can clone this:
+
+<code>git clone https://github.com/balesh2/MathLib.git</code>
 
 ## How To Use
 
