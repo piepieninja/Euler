@@ -22,8 +22,7 @@ Languages Used:
 * Bash/Shell
 * javascript
 
-*note* some c++ problems will use [Helena's Math Library](https://github.com/balesh2/MathLib)
-You can clone this:
+*note* some c++ problems will use [Helena's Math Library](https://github.com/balesh2/MathLib), it is symbolicly linked inside the <code>lib</code> directory. You will have to clone it and link it yourself if you want to run any of the code here. Just do::
 
 <code>git clone https://github.com/balesh2/MathLib.git</code>
 
