@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ int tri[15][15] = {
 {63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31,  0},
 {04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60, 04, 23}
 };
+
 // greedy
 // 95
 // 47
@@ -40,51 +42,32 @@ int tri[15][15] = {
 // 91
 // 67
 // 98
+
+
+int max(int x, int y){
+	if (x > y) return x;
+	else return y;
+}
+
 int main(){
 
-	// attempt greedy
+	// make an array the same size:
+	int sol[15][15];
+	sol[0][0] = 0;
 
-	cout << "====>> C++ <<====" << endl;
-
-	int x = 0;
-	int y = 0;
-	int sum = 75;
-	cout << "---" << endl << tri[0][0] << endl;
-	cout << tri[1][0] << tri[1][1] << endl << "---" << endl;
-	for (int i = 0; i < 16; i++){
-			if (tri[x+1][y] > tri[x+1][y+1]){
-				sum += tri[x+1][y];
-				cout << tri[x+1][y] << endl;
-				x += 1;
-			}	else {
-				sum += tri[x+1][y+1];
-				cout << tri[x+1][y+1] << endl;
-				y += 1;
-				x += 1;
-			}
+	// start with bottom row
+	for (int i = 15; i > 0; i--){
+		for (int j = 0; j < 16; j++){
+			sol[i-1][j] = max(tri[i][j], tri[i][j+1]); //builds row of lower maximums to add
+		}
+		// add the maximums from before...
+		for (int j = 0; j < 16; j++){
+			tri[i-1][j] += sol[i-1][j];
+		}
 	}
 
-	cout << "sum: " << sum << endl;
-
-	int x_1 = 0;
-	int y_1 = 0;
-	int x_2 = 0;
-	int x_2 = 0;
-	int sum = 75;
-	cout << "---" << endl << tri[0][0] << endl;
-	cout << tri[1][0] << tri[1][1] << endl << "---" << endl;
-	for (int i = 0; x_1 < 16 || x_2 < 16; i++){
-			if (tri[x_1+1][y_1] > tri[x_1+1][y_1+1]){
-				sum += tri[x_1+1][y_1];
-				cout << tri[x_1+1][y_1] << endl;
-				x += 1;
-			}	else {
-				sum += tri[x_1+1][y_1+1];
-				cout << tri[x_1+1][y_1+1] << endl;
-				y_1 += 1;
-				x_1 += 1;
-			}
-	}
+	cout << "hopefully: ";
+	cout << tri[0][0];
 
   return 0;
 }
