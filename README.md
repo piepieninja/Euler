@@ -15,6 +15,7 @@ Each algorithm will be written in a random language or set of languages.
 
 Languages Used:
 * C++
+* CUDA (debatably a language)
 * Java
 * Python
 * Ruby
